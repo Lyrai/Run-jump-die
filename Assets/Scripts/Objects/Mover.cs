@@ -12,7 +12,7 @@ public class Mover : SceneObjectsAction
     private void Start()
     {
         _currentSpeed = startSpeed;
-        StartCoroutine(IncreaseSpeed());
+        InvokeRepeating(nameof(IncreaseSpeed), 5, 5);
     }
 
     public void LateUpdate()
@@ -27,13 +27,8 @@ public class Mover : SceneObjectsAction
         objects.Remove(obj);
     }
 
-    private IEnumerator IncreaseSpeed()
+    private void IncreaseSpeed()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(5f);
-            _currentSpeed += startSpeed * 0.02f;
-            Debug.Log("increasing");
-        }
+        _currentSpeed += startSpeed * 0.02f;
     }
 }
