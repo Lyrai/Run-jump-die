@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroyable : MonoBehaviour
+public class Initial : MonoBehaviour
 {
     [SerializeField] private Mover mover;
     [SerializeField] private Destroyer destroyer;

@@ -34,11 +34,16 @@ public class LevelGenerator : LevelGeneratorBase
 
     protected override void GenerateLevelPart()
     {
-        GameObject newBlock = Instantiate(blocks[Random.Range(0, blocks.Length)], prevPartEnd.position, Quaternion.identity);
-        GameObject newBackground = Instantiate(background, prevPartEnd.position, Quaternion.identity);
-        
-        _destroyer.Add(newBlock, newBackground);
-        _mover.Add(newBlock, newBackground);
+        GameObject n = new GameObject();
+        n.name = "Container";
+        n.transform.position = prevPartEnd.position;
+        GameObject newBlock = Instantiate(blocks[Random.Range(0, blocks.Length)], n.transform);
+        newBlock.transform.localPosition = Vector3.zero;
+        GameObject newBackground = Instantiate(background, n.transform);
+        newBackground.transform.localPosition = Vector3.zero;
+
+        _destroyer.Add(n);
+        _mover.Add(n);
         
         prevPartEnd = newBlock.GetComponentsInChildren<Transform>()[2];
     }
