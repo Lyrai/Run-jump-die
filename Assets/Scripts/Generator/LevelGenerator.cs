@@ -5,18 +5,24 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Destroyer))]
+[RequireComponent(typeof(Mover))]
 public class LevelGenerator : LevelGeneratorBase
 {
     [SerializeField] private GameObject background;
     [SerializeField] private GameObject[] blocks;
+    private Destroyer _destroyer;
+    private Mover _mover;
     [FormerlySerializedAs("_prevPartEnd")] [SerializeField] private Transform prevPartEnd;
-    private const float DistanceToSpawn = 18f;
+    private const float DistanceToSpawn = 22f;
     private Transform _player;
     
     
     protected override void Start()
     {
         _player = Player.player.gameObject.transform;
+        _destroyer = GetComponent<Destroyer>();
+        _mover = GetComponent<Mover>();
         GenerateLevelPart();
     }
 
@@ -29,7 +35,11 @@ public class LevelGenerator : LevelGeneratorBase
     protected override void GenerateLevelPart()
     {
         GameObject newBlock = Instantiate(blocks[Random.Range(0, blocks.Length)], prevPartEnd.position, Quaternion.identity);
-        Instantiate(background, prevPartEnd.position, Quaternion.identity);
+        GameObject newBackground = Instantiate(background, prevPartEnd.position, Quaternion.identity);
+        
+        _destroyer.Add(newBlock, newBackground);
+        _mover.Add(newBlock, newBackground);
+        
         prevPartEnd = newBlock.GetComponentsInChildren<Transform>()[2];
     }
 

@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class Destroyable : MonoBehaviour
 {
-    private const float DistanceToBeDestroyed = 22f;
-    private Transform _player;
+    [SerializeField] private Mover mover;
+    [SerializeField] private Destroyer destroyer;
 
     void Start()
     {
-        _player = Player.player.transform;
-    }
-
-    void Update()
-    {
-        if(_player.position.x - transform.position.x > DistanceToBeDestroyed)
-            Destroy(gameObject);
+        mover.Add(gameObject);
+        destroyer.Add(gameObject);
     }
 }

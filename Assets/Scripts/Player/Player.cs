@@ -14,6 +14,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        rigidbody.velocity = Vector2.right * speed;
+        //rigidbody.velocity = Vector2.right * speed;
     }
 }
