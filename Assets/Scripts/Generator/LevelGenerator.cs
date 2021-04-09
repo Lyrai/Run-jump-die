@@ -34,8 +34,7 @@ public class LevelGenerator : LevelGeneratorBase
 
     protected override void GenerateLevelPart()
     {
-        GameObject n = new GameObject();
-        n.name = "Container";
+        GameObject n = new GameObject {name = "Container"};
         n.transform.position = prevPartEnd.position;
         GameObject newBlock = Instantiate(blocks[Random.Range(0, blocks.Length)], n.transform);
         newBlock.transform.localPosition = Vector3.zero;
