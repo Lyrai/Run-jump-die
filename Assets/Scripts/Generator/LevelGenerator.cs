@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -14,6 +13,7 @@ public class LevelGenerator : LevelGeneratorBase
     private Destroyer _destroyer;
     private Mover _mover;
     [FormerlySerializedAs("_prevPartEnd")] [SerializeField] private Transform prevPartEnd;
+    [SerializeField] private Transform prevBackgroundEnd;
     private const float DistanceToSpawn = 22f;
     private Transform _player;
     
@@ -30,19 +30,26 @@ public class LevelGenerator : LevelGeneratorBase
     {
         if(prevPartEnd.position.x - _player.position.x < DistanceToSpawn)
             GenerateLevelPart();
+        if (prevBackgroundEnd.position.x - _player.position.x < 2 * DistanceToSpawn)
+            GenerateBackground();
+    }
+
+    private void GenerateBackground()
+    {
+        GameObject newBackground = Instantiate(background, prevBackgroundEnd.position, quaternion.identity);
+        
+        _destroyer.Add(newBackground);
+        _mover.Add(newBackground);
+        
+        prevBackgroundEnd = newBackground.GetComponentsInChildren<Transform>()[2];
     }
 
     protected override void GenerateLevelPart()
     {
-        GameObject n = new GameObject {name = "Container"};
-        n.transform.position = prevPartEnd.position;
-        GameObject newBlock = Instantiate(blocks[Random.Range(0, blocks.Length)], n.transform);
-        newBlock.transform.localPosition = Vector3.zero;
-        GameObject newBackground = Instantiate(background, n.transform);
-        newBackground.transform.localPosition = Vector3.zero;
+        GameObject newBlock = Instantiate(blocks[Random.Range(0, blocks.Length)], prevPartEnd.position, Quaternion.identity);
 
-        _destroyer.Add(n);
-        _mover.Add(n);
+        _destroyer.Add(newBlock);
+        _mover.Add(newBlock);
         
         prevPartEnd = newBlock.GetComponentsInChildren<Transform>()[2];
     }
