@@ -42,10 +42,6 @@ public class GameOver : MonoBehaviour
         highestScore.text = $"Highest score: {score}";
         currentScoreText.text = $"Score: {currentScore.Score}";
         _gameIsOver = true;
-    }
-
-    private IEnumerator FadeIn()
-    {
-        throw new NotImplementedException();
+        Time.timeScale = 0;
     }
 }
