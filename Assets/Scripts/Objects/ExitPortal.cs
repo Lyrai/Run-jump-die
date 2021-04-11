@@ -6,7 +6,7 @@ public class ExitPortal : PortalBase
 {
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Portal trigger exit");
+        Player.player.SetInvulnerability(false);
         Player.player.EndCooldown();
         gameObject.SetActive(false);
     }

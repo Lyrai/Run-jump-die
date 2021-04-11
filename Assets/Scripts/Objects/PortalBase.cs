@@ -8,22 +8,19 @@ public abstract class PortalBase : MonoBehaviour
     [SerializeField] protected Mover mover;
     private Vector3 _initialPosition;
 
-    protected void Start()
+    protected virtual void Start()
     {
-        Debug.Log($"Base start {gameObject.name}");
         _initialPosition = transform.position;
         gameObject.SetActive(false);
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
-        Debug.Log($"Base OnEnable {gameObject.name}");
         mover.Add(gameObject);
     }
 
-    protected void OnDisable()
+    protected virtual void OnDisable()
     {
-        Debug.Log($"Base OnDisable {gameObject.name}");
         mover.Remove(gameObject);
         transform.position = _initialPosition;
     }

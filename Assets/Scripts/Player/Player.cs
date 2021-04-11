@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public event Action Died;
     public static Player player;
     [SerializeField] private PlayerControls controls;
+    private bool _isInvulnerable;
     
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle") && _isInvulnerable == false)
             Died?.Invoke();
     }
 
@@ -29,5 +30,10 @@ public class Player : MonoBehaviour
     public void EndCooldown()
     {
         controls.EndCooldown();
+    }
+
+    public void SetInvulnerability(bool value)
+    {
+        _isInvulnerable = value;
     }
 }
