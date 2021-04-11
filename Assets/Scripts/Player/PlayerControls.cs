@@ -50,7 +50,6 @@ public class PlayerControls : MonoBehaviour
             portals[(int)_currentLevel].Enter();
             _deltaLevel = 1;
         }
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
