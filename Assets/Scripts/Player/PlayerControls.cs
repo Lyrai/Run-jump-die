@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -67,7 +64,25 @@ public class PlayerControls : MonoBehaviour
 
     private void AssignKeys()
     {
-        //TODO Назначить кнопки управления
+        int c = PlayerPrefs.GetInt("Controls");
+
+        switch (c)
+        {
+            case 0:
+                break;
+            case 1:
+                _upKey = KeyCode.A;
+                _downKey = KeyCode.D;
+                break;
+            case 2:
+                _upKey = KeyCode.UpArrow;
+                _downKey = KeyCode.DownArrow;
+                break;
+            case 3:
+                _upKey = KeyCode.LeftArrow;
+                _downKey = KeyCode.RightArrow;
+                break;
+        }
     }
 
     private void SwitchLvl(Levels level)
