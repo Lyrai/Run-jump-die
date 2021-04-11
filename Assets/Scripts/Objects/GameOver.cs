@@ -29,6 +29,11 @@ public class GameOver : MonoBehaviour
             SceneManager.LoadScene(1);
     }
 
+    private void OnDestroy()
+    {
+        Time.timeScale = 1;
+    }
+
     private void EndGame()
     {
         gameObject.SetActive(true);

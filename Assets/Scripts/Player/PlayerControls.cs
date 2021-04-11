@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private PortalsContainer[] portals;
     [SerializeField] GameObject[] _lvls;
+    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private PlayerAnimator animator;
     private enum Levels
     {
         UpLevel,
@@ -15,8 +18,9 @@ public class PlayerControls : MonoBehaviour
     private KeyCode _downKey = KeyCode.S;
     private Levels _currentLevel = Levels.UpLevel; 
     private Transform _player;
-    [SerializeField] private bool _isCooldown;
+    private bool _isCooldown;
     private int _deltaLevel;
+    private bool _isGrounded;
 
     private void Start()
     {
@@ -31,28 +35,32 @@ public class PlayerControls : MonoBehaviour
         
         if(Input.GetKeyDown(_upKey) && Input.GetKeyDown(_downKey))
         {
-            SwitchLvl(_currentLevel);
+            if (_isGrounded)
+                Jump();
         }
         else if (Input.GetKeyDown(_upKey) && _currentLevel != Levels.UpLevel)
         {
-            Debug.Log("Controls enter");
             _isCooldown = true;
             portals[(int)_currentLevel].Enter();
             _deltaLevel = -1;
         }
         else if (Input.GetKeyDown(_downKey) && _currentLevel != Levels.DownLevel)
         {
-            Debug.Log("Controls enter");
             _isCooldown = true;
             portals[(int)_currentLevel].Enter();
             _deltaLevel = 1;
         }
         
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        _isGrounded = true;
+        animator.SetJumpState(false);
+    }
+
     public void Exit()
     {
-        Debug.Log("Controls exit");
         SwitchLvl(_currentLevel + _deltaLevel);
         portals[(int)_currentLevel].Exit();
     }
@@ -87,8 +95,15 @@ public class PlayerControls : MonoBehaviour
 
     private void SwitchLvl(Levels level)
     {
-        Debug.Log("Switch level");
         _currentLevel = level;
         _player.position = _lvls[(int)_currentLevel].transform.position;
+    }
+
+    private void Jump()
+    {
+        _isGrounded = false;
+        animator.SetJumpState(true);
+        
+        rigidbody.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
     }
 }
