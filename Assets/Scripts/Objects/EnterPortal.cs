@@ -15,7 +15,6 @@ public class EnterPortal : PortalBase
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Portal trigger enter");
             Player.player.Exit();
             gameObject.SetActive(false);
         }
