@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitPortal : MonoBehaviour
+public class ExitPortal : PortalBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Portal trigger exit");
+        Player.player.EndCooldown();
+        gameObject.SetActive(false);
     }
 }

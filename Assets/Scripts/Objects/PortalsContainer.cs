@@ -7,11 +7,13 @@ public class PortalsContainer : MonoBehaviour
     
     public void Enter()
     {
+        Debug.Log("Container enter");
         enter.gameObject.SetActive(true);
     }
 
     public void Exit()
     {
+        Debug.Log("Container exit");
         exit.gameObject.SetActive(true);
     }
 }

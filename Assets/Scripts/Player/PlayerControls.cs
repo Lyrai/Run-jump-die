@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class PlayerControls : MonoBehaviour
     private KeyCode _downKey = KeyCode.S;
     private Levels _currentLevel = Levels.UpLevel; 
     private Transform _player;
+    [SerializeField] private bool _isCooldown;
+    private int _deltaLevel;
 
     private void Start()
     {
@@ -27,21 +29,40 @@ public class PlayerControls : MonoBehaviour
 
     private void Update()
     {
+        if (_isCooldown)
+            return;
+        
         if(Input.GetKeyDown(_upKey) && Input.GetKeyDown(_downKey))
         {
             SwitchLvl(_currentLevel);
         }
         else if (Input.GetKeyDown(_upKey) && _currentLevel != Levels.UpLevel)
         {
-            //portals[(int)_currentLevel].Enter();
-            SwitchLvl(_currentLevel - 1);
+            Debug.Log("Controls enter");
+            _isCooldown = true;
+            portals[(int)_currentLevel].Enter();
+            _deltaLevel = -1;
         }
         else if (Input.GetKeyDown(_downKey) && _currentLevel != Levels.DownLevel)
         {
-            //portals[(int)_currentLevel].Enter();
-            SwitchLvl(_currentLevel + 1);
+            Debug.Log("Controls enter");
+            _isCooldown = true;
+            portals[(int)_currentLevel].Enter();
+            _deltaLevel = 1;
         }
         
+    }
+    
+    public void Exit()
+    {
+        Debug.Log("Controls exit");
+        SwitchLvl(_currentLevel + _deltaLevel);
+        portals[(int)_currentLevel].Exit();
+    }
+
+    public void EndCooldown()
+    {
+        _isCooldown = false;
     }
 
     private void AssignKeys()
@@ -51,15 +72,8 @@ public class PlayerControls : MonoBehaviour
 
     private void SwitchLvl(Levels level)
     {
-        Debug.Log($"Level: {level}");
+        Debug.Log("Switch level");
         _currentLevel = level;
         _player.position = _lvls[(int)_currentLevel].transform.position;
-        Debug.Log(_lvls[(int)_currentLevel].transform.position.y);
-        Debug.Log((int)_currentLevel);
-    }
-
-    private IEnumerator Exit()
-    {
-        throw new NotImplementedException();
     }
 }

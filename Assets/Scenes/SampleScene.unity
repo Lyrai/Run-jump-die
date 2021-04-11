@@ -131,13 +131,14 @@ GameObject:
   m_Component:
   - component: {fileID: 70284727}
   - component: {fileID: 70284726}
+  - component: {fileID: 70284728}
   m_Layer: 0
   m_Name: Portal (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &70284726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,10 +148,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 70284725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10100caa2106daf42b5941e8afd8b0e3, type: 3}
+  m_Script: {fileID: 11500000, guid: f7129371b98e5ee4bb7fd91177267443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mover: {fileID: 1659039721}
+  mover: {fileID: 1602702340}
 --- !u!4 &70284727
 Transform:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70284725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.83, y: 0.32093957, z: -4.732653}
+  m_LocalPosition: {x: -2.9100003, y: 0.32093957, z: -4.732653}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 203333920}
@@ -167,6 +168,32 @@ Transform:
   m_Father: {fileID: 1432534483}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &70284728
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70284725}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -3.04, y: 2.35}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 1.71}
+  m_EdgeRadius: 0
 --- !u!1 &125437610
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +581,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -1.87, y: 2.34}
@@ -578,7 +605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286048736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1077188, y: 0.32093957, z: -4.732653}
+  m_LocalPosition: {x: 2.33, y: 0.32093957, z: -4.732653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 300273717}
@@ -1306,13 +1333,14 @@ GameObject:
   m_Component:
   - component: {fileID: 533456495}
   - component: {fileID: 533456494}
+  - component: {fileID: 533456496}
   m_Layer: 0
   m_Name: Portal (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &533456494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,10 +1350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 533456493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10100caa2106daf42b5941e8afd8b0e3, type: 3}
+  m_Script: {fileID: 11500000, guid: f7129371b98e5ee4bb7fd91177267443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mover: {fileID: 1659039721}
+  mover: {fileID: 549294782}
 --- !u!4 &533456495
 Transform:
   m_ObjectHideFlags: 0
@@ -1334,7 +1362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533456493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.83, y: 0.32093957, z: -4.732653}
+  m_LocalPosition: {x: -2.9100003, y: 0.32093957, z: -4.732653}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1337954891}
@@ -1342,6 +1370,32 @@ Transform:
   m_Father: {fileID: 1468309066}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &533456496
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533456493}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -3.04, y: 2.35}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 1.71}
+  m_EdgeRadius: 0
 --- !u!1 &535115751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1724,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -1.87, y: 2.34}
@@ -1694,7 +1748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697530141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1077188, y: 0.32093957, z: -4.732653}
+  m_LocalPosition: {x: 2.33, y: 0.32093957, z: -4.732653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 971029951}
@@ -2120,8 +2174,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169818312}
-  - component: {fileID: 1169818310}
   - component: {fileID: 1169818311}
+  - component: {fileID: 1169818310}
   m_Layer: 0
   m_Name: Portal (1)
   m_TagString: Untagged
@@ -2138,7 +2192,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1169818309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10100caa2106daf42b5941e8afd8b0e3, type: 3}
+  m_Script: {fileID: 11500000, guid: f7129371b98e5ee4bb7fd91177267443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mover: {fileID: 1659039721}
@@ -2152,7 +2206,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -3.04, y: 2.35}
@@ -2176,7 +2230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169818309}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.83, y: 0.32093957, z: -4.732653}
+  m_LocalPosition: {x: -2.91, y: 0.32093957, z: -4.732653}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 367840786}
@@ -2231,7 +2285,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -1.87, y: 2.34}
@@ -2255,7 +2309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177715435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1077188, y: 0.32093957, z: -4.732653}
+  m_LocalPosition: {x: 2.33, y: 0.32093957, z: -4.732653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1333092068}
@@ -4364,7 +4418,7 @@ GameObject:
   - component: {fileID: 2022017766}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4381,11 +4435,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a167ed6449526a45803387514ac0a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portals: []
+  portals: [{fileID: 989065483}, {fileID: 1432534482}, {fileID: 1468309065}]
   _lvls:
   - {fileID: 485317119}
   - {fileID: 1662109249}
   - {fileID: 1201037980}
+  _isCooldown: 0
 --- !u!4 &2022017767
 Transform:
   m_ObjectHideFlags: 0
@@ -4460,6 +4515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b48e0b1d7ea76041a77153ff8c3d1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controls: {fileID: 2022017766}
 --- !u!1 &2045456290
 GameObject:
   m_ObjectHideFlags: 0

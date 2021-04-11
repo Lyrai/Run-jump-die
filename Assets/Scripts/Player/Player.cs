@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public event Action Died;
     public static Player player;
+    [SerializeField] private PlayerControls controls;
     
     private void Awake()
     {
@@ -17,5 +18,16 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
             Died?.Invoke();
+    }
+
+    public void Exit()
+    {
+        Debug.Log("Player exit");
+        controls.Exit();
+    }
+
+    public void EndCooldown()
+    {
+        controls.EndCooldown();
     }
 }
