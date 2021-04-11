@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -32,12 +33,12 @@ public class PlayerControls : MonoBehaviour
         }
         else if (Input.GetKeyDown(_upKey) && _currentLevel != Levels.UpLevel)
         {
-            portals[(int)_currentLevel].Enter();
+            //portals[(int)_currentLevel].Enter();
             SwitchLvl(_currentLevel - 1);
         }
         else if (Input.GetKeyDown(_downKey) && _currentLevel != Levels.DownLevel)
         {
-            portals[(int)_currentLevel].Enter();
+            //portals[(int)_currentLevel].Enter();
             SwitchLvl(_currentLevel + 1);
         }
         
@@ -59,6 +60,6 @@ public class PlayerControls : MonoBehaviour
 
     private IEnumerator Exit()
     {
-        
+        throw new NotImplementedException();
     }
 }
