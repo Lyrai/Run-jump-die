@@ -39,8 +39,8 @@ public class GameOver : MonoBehaviour
             score = currentScore.Score;
         }
         
-        highestScore.text = $"Highest score: {score}";
-        currentScoreText.text = $"Score: {currentScore.Score}";
+        highestScore.text = $"{score}";
+        currentScoreText.text = $"{currentScore.Score}";
         _gameIsOver = true;
         Time.timeScale = 0;
     }
