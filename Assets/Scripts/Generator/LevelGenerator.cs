@@ -47,7 +47,7 @@ public class LevelGenerator : LevelGeneratorBase
     protected override void GenerateLevelPart()
     {
         GameObject newBlock;
-        if(Random.Range(0, 1f) < 0.7f)
+        if(Random.Range(0, 1f) < 0.6f)
             newBlock = Instantiate(blocks[0], prevPartEnd.position, Quaternion.identity);
         else if (Random.Range(0, 1f) < 0.5f)
             newBlock = Instantiate(blocks[0], prevPartEnd.position, Quaternion.identity);

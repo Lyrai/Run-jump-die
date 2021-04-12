@@ -121,7 +121,7 @@ public class PlayerControls : MonoBehaviour
         float t = 0;
         while (t < 0.1f)
         {
-            if (Input.GetKeyDown(code))
+            if (Input.GetKey(code))
             {
                 if (_isGrounded)
                     Jump();
