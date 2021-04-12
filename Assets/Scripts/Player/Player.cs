@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Player trigger enter");
         if (other.gameObject.CompareTag("Obstacle") && _isInvulnerable == false)
             Died?.Invoke();
     }
