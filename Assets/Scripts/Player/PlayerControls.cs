@@ -113,7 +113,7 @@ public class PlayerControls : MonoBehaviour
         _isGrounded = false;
         animator.SetJumpState(true);
         
-        rigidbody.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+        rigidbody.AddForce(Vector2.up * 6f, ForceMode2D.Impulse);
     }
 
     private IEnumerator AwaitInput(KeyCode code, Action action)
