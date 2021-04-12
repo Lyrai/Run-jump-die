@@ -37,23 +37,27 @@ public class PlayerControls : MonoBehaviour
         
         if (Input.GetKeyDown(_upKey))
         {
-            StartCoroutine(AwaitInput(_downKey));
-            if(_currentLevel != Levels.UpLevel && _isGrounded)
-            {
-                _isCooldown = true;
-                portals[(int) _currentLevel].Enter();
-                _deltaLevel = -1;
-            }
+            StartCoroutine(AwaitInput(_downKey, () => 
+                {  
+                    if(_currentLevel != Levels.UpLevel && _isGrounded)
+                    {
+                        _isCooldown = true;
+                        portals[(int) _currentLevel].Enter();
+                        _deltaLevel = -1;
+                    }
+                }));
         }
         else if (Input.GetKeyDown(_downKey))
         {
-            StartCoroutine(AwaitInput(_upKey));
-            if(_currentLevel != Levels.DownLevel && _isGrounded)
+            StartCoroutine(AwaitInput(_upKey, () =>
             {
-                _isCooldown = true;
-                portals[(int) _currentLevel].Enter();
-                _deltaLevel = 1;
-            }
+                if(_currentLevel != Levels.DownLevel && _isGrounded)
+                {
+                    _isCooldown = true;
+                    portals[(int) _currentLevel].Enter();
+                    _deltaLevel = 1;
+                }
+            }));
         }
     }
 
@@ -112,7 +116,7 @@ public class PlayerControls : MonoBehaviour
         rigidbody.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
     }
 
-    private IEnumerator AwaitInput(KeyCode code)
+    private IEnumerator AwaitInput(KeyCode code, Action action)
     {
         float t = 0;
         while (t < 0.1f)
@@ -121,13 +125,13 @@ public class PlayerControls : MonoBehaviour
             {
                 if (_isGrounded)
                     Jump();
-                t = 1;
+                yield break;
             }
-            else
-            {
-                t += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
+            
+            t += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
+        
+        action.Invoke();
     }
 }
