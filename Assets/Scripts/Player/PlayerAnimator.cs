@@ -14,7 +14,7 @@ public class PlayerAnimator : MonoBehaviour
         if (_isJumping == false) 
             return;
         
-        if(rigidbody.velocity.y < 0)
+        if(rigidbody.velocity.y <= 0)
         {
             animator.SetBool("Jump", false);
             animator.SetBool("Fall", true);
