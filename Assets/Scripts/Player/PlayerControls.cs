@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
@@ -38,13 +39,13 @@ public class PlayerControls : MonoBehaviour
             if (_isGrounded)
                 Jump();
         }
-        else if (Input.GetKeyDown(_upKey) && _currentLevel != Levels.UpLevel)
+        else if (Input.GetKeyDown(_upKey) && _currentLevel != Levels.UpLevel && _isGrounded)
         {
             _isCooldown = true;
             portals[(int)_currentLevel].Enter();
             _deltaLevel = -1;
         }
-        else if (Input.GetKeyDown(_downKey) && _currentLevel != Levels.DownLevel)
+        else if (Input.GetKeyDown(_downKey) && _currentLevel != Levels.DownLevel && _isGrounded)
         {
             _isCooldown = true;
             portals[(int)_currentLevel].Enter();
@@ -105,5 +106,24 @@ public class PlayerControls : MonoBehaviour
         animator.SetJumpState(true);
         
         rigidbody.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+    }
+
+    private IEnumerator AwaitInput(KeyCode code)
+    {
+        float t = 0;
+        while (t < 0.1f)
+        {
+            if (Input.GetKeyDown(code))
+            {
+                if (_isGrounded)
+                    Jump();
+                t = 1;
+            }
+            else
+            {
+                t += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 }
