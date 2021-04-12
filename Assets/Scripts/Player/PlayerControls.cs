@@ -34,22 +34,26 @@ public class PlayerControls : MonoBehaviour
         if (_isCooldown)
             return;
         
-        if(Input.GetKeyDown(_upKey) && Input.GetKeyDown(_downKey))
+        
+        if (Input.GetKeyDown(_upKey))
         {
-            if (_isGrounded)
-                Jump();
+            StartCoroutine(AwaitInput(_downKey));
+            if(_currentLevel != Levels.UpLevel && _isGrounded)
+            {
+                _isCooldown = true;
+                portals[(int) _currentLevel].Enter();
+                _deltaLevel = -1;
+            }
         }
-        else if (Input.GetKeyDown(_upKey) && _currentLevel != Levels.UpLevel && _isGrounded)
+        else if (Input.GetKeyDown(_downKey))
         {
-            _isCooldown = true;
-            portals[(int)_currentLevel].Enter();
-            _deltaLevel = -1;
-        }
-        else if (Input.GetKeyDown(_downKey) && _currentLevel != Levels.DownLevel && _isGrounded)
-        {
-            _isCooldown = true;
-            portals[(int)_currentLevel].Enter();
-            _deltaLevel = 1;
+            StartCoroutine(AwaitInput(_upKey));
+            if(_currentLevel != Levels.DownLevel && _isGrounded)
+            {
+                _isCooldown = true;
+                portals[(int) _currentLevel].Enter();
+                _deltaLevel = 1;
+            }
         }
     }
 
