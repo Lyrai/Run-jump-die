@@ -49,6 +49,8 @@ public class LevelGenerator : LevelGeneratorBase
         GameObject newBlock;
         if(Random.Range(0, 1f) < 0.7f)
             newBlock = Instantiate(blocks[0], prevPartEnd.position, Quaternion.identity);
+        else if (Random.Range(0, 1f) < 0.5f)
+            newBlock = Instantiate(blocks[0], prevPartEnd.position, Quaternion.identity);
         else
             newBlock = Instantiate(blocks[Random.Range(1, blocks.Length)], prevPartEnd.position, Quaternion.identity);
 
